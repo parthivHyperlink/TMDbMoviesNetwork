@@ -7,9 +7,9 @@
 
 import Foundation
 
-class NetworkManager {
+public class NetworkManager {
     
-    static let shared = NetworkManager()
+    public static let shared = NetworkManager()
     
     func makerequest(url: URL, method: String, params: [String:Any] = [:], headers: [String:String], completionHandler: ((Data?,URLResponse?,Error?)->())?) {
         func makeJSON(_ obj: Any)-> Data {
@@ -42,10 +42,10 @@ class NetworkManager {
         
         headers.forEach({ request.addValue($0.value, forHTTPHeaderField: $0.key)})
         let session = URLSession.shared
-        print(request.url)
+        print(request.url as Any)
         let task = session.dataTask(with: request) {
             completionHandler?($0,$1,$2)
-            print("Response: ",String(data: $0 ?? Data(), encoding: .utf8))
+            print("Response: ",String(data: $0 ?? Data(), encoding: .utf8) as Any)
         }
         task.resume()
     }
