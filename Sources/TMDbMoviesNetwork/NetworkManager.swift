@@ -11,7 +11,7 @@ public class NetworkManager {
     
     public static let shared = NetworkManager()
     
-    func makerequest(url: URL, method: String, params: [String:Any] = [:], headers: [String:String], completionHandler: ((Data?,URLResponse?,Error?)->())?) {
+    public func makerequest(url: URL, method: String, params: [String:Any] = [:], headers: [String:String], completionHandler: ((Data?,URLResponse?,Error?)->())?) {
         func makeJSON(_ obj: Any)-> Data {
             if let data = try? JSONSerialization.data(withJSONObject: obj) {
                 return data
